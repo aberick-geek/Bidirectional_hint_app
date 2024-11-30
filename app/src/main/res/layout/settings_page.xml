@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <!-- Toolbar or App Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="wrap"
+        android:elevation="4dp"
+        app:contentInsetStartWithNavigation="0dp">
+
+        <!-- Logo on the left -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_logo_white"
+            android:maxHeight="100dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/app_name" />
+
+        <!-- Settings button on the right -->
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_settings"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/settings"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:layout_marginHorizontal="20dp"
+            app:tint="@color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Scrollable content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <!-- Auto-reply for Incoming SMS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/Auto_reply_incoming_SMS"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- EditText and Save Button (initially visible) -->
+                <EditText
+                    android:id="@+id/smsReceivedEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="start|top"
+                    android:hint="@string/Auto_reply_placeholder"
+                    android:minLines="3" />
+
+                <Button
+                    android:id="@+id/smsReceivedSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/smsReceivedEditText"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
+                    android:text="Enregistrer" />
+
+                <!-- Message Bubble with Date and Delete Icon (initially hidden) -->
+                <LinearLayout
+                    android:id="@+id/smsReceivedBubble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/smsReceivedEditText"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/message_bubble_background"
+                    android:backgroundTint="@color/secondary"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:visibility="gone">
+
+                    <!-- RelativeLayout to hold the date and delete icon on the same line -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:paddingRight="10dp">
+
+                        <TextView
+                            android:id="@+id/smsReceivedDateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="22 Aug 2024 13:00"
+                            android:textColor="@color/black" />
+
+                        <ImageButton
+                            android:id="@+id/smsReceivedDeleteButton"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="delete"
+                            android:src="@drawable/ic_delete"
+                            app:tint="@color/red" />
+                    </RelativeLayout>
+
+                    <!-- Message TextView below the date and delete icon -->
+                    <TextView
+                        android:id="@+id/smsReceivedTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Message saved"
+                        android:textColor="@color/primary"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Auto-reply for Missed Calls -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/Auto_reply_missed_calls"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- EditText and Save Button (initially visible) -->
+                <EditText
+                    android:id="@+id/missedCallEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="start|top"
+                    android:hint="@string/Auto_reply_placeholder"
+                    android:minLines="3" />
+
+                <Button
+                    android:id="@+id/missedCallSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/missedCallEditText"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/primary"
+                    android:text="Enregistrer" />
+
+                <!-- Message Bubble with Date and Delete Icon (initially hidden) -->
+                <LinearLayout
+                    android:id="@+id/missedCallBubble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/missedCallEditText"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/message_bubble_background"
+                    android:backgroundTint="@color/secondary"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:visibility="gone">
+
+                    <!-- RelativeLayout to hold the date and delete icon on the same line -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:paddingRight="10dp">
+
+                        <TextView
+                            android:id="@+id/missedCallDateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="22 Aug 2024 13:00"
+                            android:textColor="@color/black" />
+
+                        <ImageButton
+                            android:id="@+id/missedCallDeleteButton"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="delete"
+                            android:src="@drawable/ic_delete"
+                            app:tint="@color/red" />
+                    </RelativeLayout>
+
+                    <!-- Message TextView below the date and delete icon -->
+                    <TextView
+                        android:id="@+id/missedCallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Message saved"
+                        android:textColor="@color/primary"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Auto-reply for Answered Calls -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/Auto_reply_answered_calls"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- EditText and Save Button (initially visible) -->
+                <EditText
+                    android:id="@+id/answeredCallEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="start|top"
+                    android:hint="@string/Auto_reply_placeholder"
+                    android:minLines="3" />
+
+                <Button
+                    android:id="@+id/answeredCallSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/answeredCallEditText"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
+                    android:text="Enregistrer" />
+
+                <!-- Message Bubble with Date and Delete Icon (initially hidden) -->
+                <LinearLayout
+                    android:id="@+id/answeredCallBubble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/answeredCallEditText"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/message_bubble_background"
+                    android:backgroundTint="@color/secondary"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:visibility="gone">
+
+                    <!-- RelativeLayout to hold the date and delete icon on the same line -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:paddingRight="10dp">
+
+                        <TextView
+                            android:id="@+id/answeredCallDateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="22 Aug 2024 13:00"
+                            android:textColor="@color/black" />
+
+                        <ImageButton
+                            android:id="@+id/answeredCallDeleteButton"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="delete"
+                            android:src="@drawable/ic_delete"
+                            app:tint="@color/red" />
+                    </RelativeLayout>
+
+                    <!-- Message TextView below the date and delete icon -->
+                    <TextView
+                        android:id="@+id/answeredCallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Message saved"
+                        android:textColor="@color/primary"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Auto-reply for Redirected Calls -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/Auto_reply_redirected_calls"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- EditText and Save Button (initially visible) -->
+                <EditText
+                    android:id="@+id/redirectedCallEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="start|top"
+                    android:hint="@string/Auto_reply_placeholder"
+                    android:minLines="3" />
+
+                <Button
+                    android:id="@+id/redirectedCallSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/redirectedCallEditText"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
+                    android:text="Enregistrer" />
+
+                <!-- Message Bubble with Date and Delete Icon (initially hidden) -->
+                <LinearLayout
+                    android:id="@+id/redirectedCallBubble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/redirectedCallEditText"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/message_bubble_background"
+                    android:backgroundTint="@color/secondary"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:visibility="gone">
+
+                    <!-- RelativeLayout to hold the date and delete icon on the same line -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:paddingRight="10dp">
+
+                        <TextView
+                            android:id="@+id/redirectedCallDateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="22 Aug 2024 13:00"
+                            android:textColor="@color/black" />
+
+                        <ImageButton
+                            android:id="@+id/redirectedCallDeleteButton"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="delete"
+                            android:src="@drawable/ic_delete"
+                            app:tint="@color/red" />
+                    </RelativeLayout>
+
+                    <!-- Message TextView below the date and delete icon -->
+                    <TextView
+                        android:id="@+id/redirectedCallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Message saved"
+                        android:textColor="@color/primary"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

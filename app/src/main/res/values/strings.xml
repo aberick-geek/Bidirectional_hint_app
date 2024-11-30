@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Empire BiDi</string>
+    <string name="settings">Settings</string>
+    <string name="onboarding_title_1">Smart Communication Management</string>
+    <string name="onboarding1_title_2">Unlock Your Market Potential</string>
+    <string name="onboarding1">Automatically respond to all calls and SMS messages, ensuring you are always connected, even when you are unavailable.</string>
+    <string name="onboarding2">Stay ahead of the competition by capturing a bigger slice of the market. Strategize, execute, and achieve your business goals.</string>
+    <string name="save">Save</string>
+    <string name="set_auto_reply">Set</string>
+    <string name="Auto_reply_incoming_SMS">Auto-reply for Incoming SMS</string>
+    <string name="Auto_reply_missed_calls">Auto-reply for Missed Calls</string>
+    <string name="Auto_reply_answered_calls">Auto-reply for Answered Calls</string>
+    <string name="Auto_reply_redirected_calls">Auto-reply for Redirected Calls</string>
+    <string name="Auto_reply_not_set_incoming_SMS">Auto-reply have not for Incoming SMS</string>
+    <string name="Auto_reply_not_set_missed_calls">Auto-reply have not for Missed Calls</string>
+    <string name="Auto_reply_not_set_answered_calls">Auto-reply have not for Answered Calls</string>
+    <string name="Auto_reply_not_set_redirected_calls">Auto-reply have not for Redirected Calls</string>
+    <string name="Auto_reply_placeholder">Enter your Auto-reply message</string>
+    <string name="empty">No History for the moment</string>
+    <string name="update_at">updated at : </string>
+    <string name="the_number">The number </string>
+    <string name="already_sms"> is already an old costumer.</string>
+    <string name="sms_sent">Automatic reply sent</string>
+    <string name="sms_sent_to">A greeting has been sent to the number : </string>
+    <string name="sms_sent_error">The SMS auto-reply has not been configured.</string>
+</resources>

@@ -1,0 +1,9 @@
+<!-- res/drawable/message_bubble_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/gray"/> <!-- Background color of the bubble -->
+    <corners android:radius="8dp"/> <!-- Border radius for rounded corners -->
+    <padding android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp"/>
+</shape>
